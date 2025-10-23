@@ -1,6 +1,7 @@
 import express from 'express';
 import Idea from '../model/Idea.js';
 import mongoose from 'mongoose';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -48,7 +49,7 @@ router.get('/:id', async (req, res, next) => {
 
 
 
-router.post('/', async (req, res) => {
+router.post('/', protect, async (req, res) => {
     try {
         const { title, summary, description, tags } = req.body || {};
 
@@ -81,7 +82,7 @@ router.post('/', async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', protect, async (req, res, next) => {
     try {
         const { id } = req.params;
 
@@ -105,7 +106,7 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', protect, async (req, res, next) => {
     try {
         const { id } = req.params;
 
