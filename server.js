@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8000;
 connectDB();
 
 const allowedOrigins = [
-    'http://localhost:3000'
+    'http://localhost:3000', 'https://idea-drop-frontend-teal.vercel.app'
 ]
 
 app.use(cors({
